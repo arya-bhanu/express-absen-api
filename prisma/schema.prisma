@@ -9,17 +9,23 @@ datasource db {
 }
 
 model StudentClass {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  nim      String @unique
-  password String
+  id               Int      @id @default(autoincrement())
+  name             String
+  email            String   @unique
+  nim              String   @unique
+  password         String
+  registrationCode Int?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 }
 
 model Assistant {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  nim      String @unique
-  password String
+  id               Int      @id @default(autoincrement())
+  name             String
+  email            String   @unique
+  nim              String   @unique
+  password         String
+  registrationCode Int?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime? @updatedAt
 }

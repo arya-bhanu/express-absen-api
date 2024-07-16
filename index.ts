@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
 import { IndexRoute } from './routers/index.route';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 const prisma = new PrismaClient();
@@ -14,8 +15,12 @@ async function main() {
 	const cookieSecret = process.env.COOKIE_SECRET || 'cookie-secret';
 	const corsConfig = cors({ origin: [process.env.CLIENT_URL_1 as string] });
 
+	
+
 	// global middleware
 	app.use(corsConfig);
+
+	app.use(bodyParser.json())
 
 	app.use(cookieParser(cookieSecret));
 
